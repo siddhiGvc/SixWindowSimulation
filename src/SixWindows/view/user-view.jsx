@@ -58,9 +58,10 @@ export default function UserPage() {
     const Interval=setInterval(()=>{
       getSerialPorts().then((res)=>{
           setData(res);
+          setValue1(res.value1);
       })
     
-    },10000)
+    },1000)
 
 
 
@@ -262,7 +263,7 @@ export default function UserPage() {
                       key={value5}
 
                       testMode={isChecked}
-                      m={value5}
+                      m={value1}
                       board={5}
                       handleClick={(event) => handleClick(event, value1)}
                     />

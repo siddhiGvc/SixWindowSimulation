@@ -113,13 +113,17 @@ export default function UserTableRow({
   useEffect(() => {
  
    
-      setShowImage(true);
-      setShowVideo(false);
+    
       console.log(m,board);
-      if(parseInt(m)===board)
+      if(parseInt(m)==board)
       {
-        setShowImage(false);
-        setShowVideo(true);
+        
+          setShowImage(false);
+          setShowVideo(true);
+         
+
+     
+       
       }
      
     
@@ -131,6 +135,16 @@ export default function UserTableRow({
     setShowImage(true);
    
   };
+
+  useEffect(() => {
+    if (showVideo && videoRef.current) {
+      videoRef.current.play().catch(error => {
+        console.error("Autoplay with sound failed. Trying to notify the user or play muted.", error);
+      });
+    }
+  }, [showVideo]);
+  
+  
 
   // const online = a => moment().diff(moment.utc((a.lastHeartBeatTime)), 'minute') < 10;
 
@@ -181,11 +195,7 @@ export default function UserTableRow({
           <div style={{width:'100%' ,height:"100%"}}  role="button"
           tabIndex={0}
           onClick={handleClick}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              handleClick();
-            }
-          }}>
+        >
         <img  width="100%" height="100%"  src="https://th.bing.com/th/id/OIP.pdfFhhpDtb1wiuMMXpcXTwHaDt?rs=1&pid=ImgDetMain" alt="img"/>
          </div>
       )}
