@@ -115,10 +115,16 @@ export default function UserTableRow({
    
       setShowImage(true);
       setShowVideo(false);
+      console.log(m,board);
+      if(parseInt(m)===board)
+      {
+        setShowImage(false);
+        setShowVideo(true);
+      }
      
     
    
-  }, []);
+  }, [m]);
 
   const handleVideoEnd = () => {
     setShowVideo(false);

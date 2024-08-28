@@ -3,6 +3,7 @@ import {useState, useEffect} from 'react';
 import Card from '@mui/material/Card';
 import Container from '@mui/material/Container';
 import UserTableRow from '../user-table-row';
+import { getSerialPorts } from '../../_mock/macAddress';
 
 
 export default function UserPage() {
@@ -40,37 +41,37 @@ export default function UserPage() {
 
   // const online = a => moment().diff(moment.utc((a.lastHeartBeatTime)), 'minute') < 10;
 
-  // useEffect(()=>{
+  useEffect(()=>{
     
-  //   getSerialPorts().then((res)=>{
+    getSerialPorts().then((res)=>{
 
-  //     console.log(res);
-  //     setData(res);
-  //     setValue1(res.value1);
+      console.log(res);
+      setData(res);
+      setValue1(res.value1);
 
      
       
       
-  //   })
+    })
 
   
-  //   const Interval=setInterval(()=>{
-  //     getSerialPorts().then((res)=>{
-  //         setData(res);
-  //     })
+    const Interval=setInterval(()=>{
+      getSerialPorts().then((res)=>{
+          setData(res);
+      })
     
-  //   },10000)
+    },10000)
 
 
 
   
 
-  //   return()=>{
-  //     clearInterval(Interval);
-  //   }
+    return()=>{
+      clearInterval(Interval);
+    }
  
 
-  // },[])
+  },[])
 
   
 
