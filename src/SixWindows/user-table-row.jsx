@@ -181,7 +181,7 @@ export default function UserTableRow({
   
       </TableRow >
       <div 
-  style={{border:"1px solid grey", overflow: "auto", height:'50vh',paddingTop:"5px",paddingLeft:'2px',marginTop:"-20px"}}
+  style={{border:"1px solid grey", overflow: "auto", height:'40vh',paddingTop:"5px",paddingLeft:'2px',marginTop:"-20px"}}
 >
   {showImage && (
     <div 
