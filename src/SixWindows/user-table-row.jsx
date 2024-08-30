@@ -180,238 +180,42 @@ export default function UserTableRow({
     </TableCell>
   
       </TableRow >
-        <div style={{border:"1px solid grey", overflow: "auto", height: "255px",paddingTop:"5px",paddingLeft:'2px',marginTop:"-20px"}}>
-         {/* {m.Voutput? <video width="100%" height="100%" controls autoPlay>
-          <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
-          <track
-            src="path-to-your-captions.vtt"
-            kind="captions"
-            srcLang="en"
-            label="English"
-          />
-          Your browser does not support the video tag.
-        </video>:null} */}
-         {showImage && (
-          <div style={{width:'100%' ,height:"100%"}}  role="button"
-          tabIndex={0}
-          onClick={handleClick}
-        >
-        <img  width="100%" height="100%"  src="https://th.bing.com/th/id/OIP.pdfFhhpDtb1wiuMMXpcXTwHaDt?rs=1&pid=ImgDetMain" alt="img"/>
-         </div>
-      )}
-        {showVideo && (
-        <video ref={videoRef} width="100%" height="100%" controls autoPlay  onEnded={handleVideoEnd}>
-          <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
-          <track src="path-to-your-captions.vtt" kind="captions" srcLang="en" label="English" />
-          Your browser does not support the video tag.
-        </video>
-      )}
-           {/* <b style={{fontSize: '1.20em',cursor:'pointer'}} >{m.MacID} {m.SocketNumber}</b>
-         <table className="table" style={{fontSize:'14px'}}>
+      <div 
+  style={{border:"1px solid grey", overflow: "auto", height:'50vh',paddingTop:"5px",paddingLeft:'2px',marginTop:"-20px"}}
+>
+  {showImage && (
+    <div 
+      style={{ 
+        width: '100%', 
+        height: "100%" 
+      }}  
+      role="button"
+      tabIndex={0}
+      onClick={handleClick}
+    >
+      <img  
+        width='100%'
+        height='100%'
+        src="https://th.bing.com/th/id/OIP.pdfFhhpDtb1wiuMMXpcXTwHaDt?rs=1&pid=ImgDetMain" 
+        alt="img"
+      />
+    </div>
+  )}
+  {showVideo && (
+    <video 
+      ref={videoRef} 
+      width="100%" height='100%'
+      controls 
+      autoPlay  
+      onEnded={handleVideoEnd}
+    >
+      <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+      <track src="path-to-your-captions.vtt" kind="captions" srcLang="en" label="English" />
+      Your browser does not support the video tag.
+    </video>
+  )}
+</div>
 
-                            <tbody > 
-                         
-                          
-                            <tr>
-                                  <th style={{display:'flex',justifyContent:'space-between'}}>   
-                                    <div className="col-xl-5 col-lg-7 col-md-8 col-12 col-12 my-2 mx-3 ">
-                                      
-                                        <div  style={{display:'flex',alignItems:'center',gap:'3px'}}>
-                                         
-                                          <h5>V</h5>
-                                             <div>
-                                              <input type='number' style={{width:'100px'}} placeholder='Pin' onChange={(e)=>setPin(e.target.value)}/>
-                                              <input type='number' style={{width:'100px'}} placeholder='Pulse' onChange={(e)=>setPulse(e.target.value)}/>
-                                              </div>
-                                            
-                                              <button disabled={disable} type="button"   className={`btn btn-${board===1?m.Color:''} btn-info text-white `}  style={{height:"30px",width:'60px',fontSize:'12px'}}  onClick={()=>sendV(m.MacID,pin,pulse,m.SocketNumber,sessionStorage.getItem("name"))} >
-                                              SEND
-                                          </button>
-                                            
-                                        </div>
-                                    </div>
-                                    <Typography>
-                              <p> Message</p>
-                              {m.Voutput}
-                              </Typography>
-                          
-                              </th>
-                              <td /> 
-                              </tr>
-                              <tr>
-                                  <th style={{display:'flex',justifyContent:'space-between'}}>   
-                                    <div className="col-xl-4 col-lg-6 col-md-7 col-12 col-12 my-2 mx-3">
-                                      
-                                        <div className="row">
-                                         
-                                            <div className="col-12 sw-parent">
-                                              
-                                            <button disabled={disable} type="button" className={`btn  btn-${board===2 || board===3? m.Color:''} btn-secondary text-white`}  onClick={()=>checkSN(m.MacID,m.SocketNumber)} >
-                                              *SN?#
-                                          </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <td>
-                              <Typography>
-                              <p> Message</p>
-                              {m.SNmessage}
-                              </Typography>
-                                </td>
-                          
-                              </th>
-                              <td /> 
-        
-                              </tr>  
-        
-                              
-                              <tr>
-                                  <th style={{display:'flex',justifyContent:'space-between'}}>   
-                                    <div className="col-xl-4 col-lg-6 col-md-7 col-12 col-12 my-2 mx-3">
-                                      
-                                        <div className="row">
-                                         
-                                            <div className="col-12 sw-parent">
-                                              
-                                            <button disabled={disable} type="button" className={`btn  btn-${board===2 || board===3? m.Color:''} btn-secondary text-white`}  onClick={()=>sendTC(m.MacID,m.SocketNumber,sessionStorage.getItem("name"))} >
-                                              *TC?#
-                                          </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <td>
-                              <Typography>
-                              <p> Message</p>
-                              {m.TCoutput}
-                              </Typography>
-                                </td>
-                          
-                              </th>
-                              <td /> 
-        
-                              </tr>  
-                            
-                              
-                             
-                                <tr>
-                                  <th style={{display:'flex',justifyContent:'space-between'}}>   
-                                    <div className="col-xl-4 col-lg-7 col-md-7 col-12 col-12 my-2 mx-3">
-                                         <div className="row">
-                                            <div className="col-12 sw-parent">
-                                              <button disabled={disable} type="button" className="btn btn-secondary text-white "  onClick={()=>sendTV(m.MacID,m.SocketNumber,sessionStorage.getItem("name"))} >
-                                               *TV?#
-                                              </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <td>
-                                  <Typography>
-                                  <p> Message</p>
-                                  {m.TVoutput}
-                                  </Typography>
-                                    </td>
-                                  </th>
-                                  <td /> 
-                                </tr>
-                           
-                             
-                         
-                                <tr>
-                                  <th>   
-                                    <div className="col-xl-4 col-lg-7 col-md-7 col-12 col-12 my-2 mx-3">
-                                         <div className="row">
-                                            <div className="col-12 sw-parent">
-                                              <button disabled={disable} type="button" className="btn btn-secondary text-white "  onClick={()=>sendFW(m.MacID,m.SocketNumber,sessionStorage.getItem("name"))} >
-                                               *Fw?#
-                                              </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                  </th>
-                                  <td>
-                                  <Typography>
-                                  <p> Message</p>
-                                  {m.FWoutput}
-                                  </Typography>
-                                    </td>
-                                </tr>
-                               <tr>
-                                  <th>   
-                                    <div className="col-xl-4 col-lg-7 col-md-7 col-12 col-12 my-2 mx-3">
-                                    <div className="row">
-                                            <div className="col-12 sw-parent">
-                                              <button disabled={disable} type="button" className="btn btn-secondary text-white "  onClick={()=>askUrl(m.MacID,m.SocketNumber,sessionStorage.getItem("name"))} >
-                                               *URL?#
-                                              </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                  </th>
-                                  <td>
-                                  <Typography>
-                                  <p style={{width:'200px',height:'50px'}}> Message</p>
-                                  {m.URLoutput}
-                                  </Typography>
-                                    </td>
-                                </tr>
-                            
-                              
-                              <tr>
-                                  <th>   
-                                    <div className="col-xl-5 col-lg-7 col-md-8 col-12 col-12 my-2 mx-3">
-                                      
-                                        <div  style={{display:'flex',alignItems:'center',gap:'5px'}}>
-                                        <button disabled={disable} type="button" className="btn btn-secondary text-white "  onClick={()=>askSIP(m.MacID,m.SocketNumber,sessionStorage.getItem("name"))} >
-                                               *SIP?#
-                                              </button>
-                                            
-                                        </div>
-                                    </div>
-                          
-                              </th>
-                                <td>
-                              <Typography>
-                              <p> Message</p>
-                              {m.SIPmessage}
-                              </Typography>
-                                </td>
-        
-                              </tr> 
-                             
-                              <tr>
-                                  <th>   
-                                    <div className="col-xl-5 col-lg-7 col-md-8 col-12 col-12 my-2 mx-3">
-                                      
-                                    <div className="row">
-                                            <div className="col-12 sw-parent">
-                                              <button disabled={disable} type="button" className="btn btn-secondary text-white "  onClick={()=>askSSID(m.MacID,m.SocketNumber,sessionStorage.getItem("name"))} >
-                                               *SSID?#
-                                              </button>
-                                            </div>
-                                        </div>
-                                      
-                                    </div>
-                                    
-                          
-                              </th>
-                                <td>
-                              <Typography>
-                              <p> Message</p>
-                              {m.SSIDmessage}
-                              </Typography>
-                                </td>
-        
-                              </tr>  
-                             
-                            
-                              
-                            
-                             
-                                                                                                            
-                            </tbody>
-                        </table>
-                */}
-       </div>
       <Modal
         open={openModal}
         onClose={handleModalClose}
