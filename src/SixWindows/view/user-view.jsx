@@ -3,25 +3,13 @@ import {useState, useEffect} from 'react';
 import Card from '@mui/material/Card';
 import Container from '@mui/material/Container';
 import UserTableRow from '../user-table-row';
-import { getSerialPorts } from '../../_mock/macAddress';
 
+import Error from "./Error"
 
 export default function UserPage() {
 
-  // const [setOptions1]=useState([]);
-  // const [setOptions2]=useState([]);
-  // const [setOptions3]=useState([]);
-  // const [setOptions4]=useState([]);
-  // const [options5,setOptions5]=useState([]);
-  // const [options6,setOptions6]=useState([]);
-
-  // const [selectedOption1, setSelectedOption1] = useState({id:-1});
-  // const [selectedOption2, setSelectedOption2] = useState({id:-1});
-  // const [selectedOption3, setSelectedOption3] = useState({id:-1});
-  // const [selectedOption4, setSelectedOption4] = useState({id:-1});
-  // const [selectedOption5, setSelectedOption5] = useState({id:-1});
-  // const [selectedOption6, setSelectedOption6] = useState({id:-1});
-
+ 
+  const[error ,setError]=useState(false);
   const [value1,setValue1]=useState({});
   const [value2]=useState({});
   const [value3]=useState({});
@@ -41,11 +29,35 @@ export default function UserPage() {
 
   // const online = a => moment().diff(moment.utc((a.lastHeartBeatTime)), 'minute') < 10;
 
+
+ const getSerialPorts=async()=> {
+  
+    try {
+    
+      const headers = new Headers({
+        'x-token': sessionStorage.getItem('token'),
+      });
+
+      const response = await fetch(`http://localhost:7000/SerialPort/getSerialPorts`, { method: 'GET', headers });
+      const json = await response.json();
+      // console.log(json)
+      setError(false);
+      return json.data;
+    } catch (error) {
+      setError(true);
+      console.error('Error fetching data:', error);
+  
+      return [];
+    }
+  }
+
+
   useEffect(()=>{
     
     getSerialPorts().then((res)=>{
 
       console.log(res);
+   
       setData(res);
       setValue1(res.value1);
 
@@ -53,14 +65,16 @@ export default function UserPage() {
       
       
     })
+ 
 
   
     const Interval=setInterval(()=>{
       getSerialPorts().then((res)=>{
+          
           setData(res);
           setValue1(res.value1);
       })
-    
+   
     },1000)
 
 
@@ -73,6 +87,9 @@ export default function UserPage() {
  
 
   },[])
+
+
+  
 
   
 
@@ -100,7 +117,7 @@ export default function UserPage() {
     <Container maxWidth='xxl'>
      
      <Card  spacing={2}  sx={{padding:'20px', justifyContent:'center'}}>
-     
+     {error ? <Error/>:<>
       <div className="row">
                     <div className="col-md-4">
                         <div className="form-group my-2">
@@ -286,7 +303,7 @@ export default function UserPage() {
           filterName={filterName}
           onFilterName={handleFilterByName}
         /> */}
-
+         </>}
        
       </Card>
     </Container>
