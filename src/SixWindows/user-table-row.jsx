@@ -118,8 +118,7 @@ export default function UserTableRow({
       if(parseInt(m)==board)
       {
         
-          setShowImage(false);
-          setShowVideo(true);
+         handleClick();
          
 
      
@@ -210,6 +209,7 @@ export default function UserTableRow({
       controls 
       autoPlay  
       onEnded={handleVideoEnd}
+      muted
     >
       <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
       <track src="path-to-your-captions.vtt" kind="captions" srcLang="en" label="English" />
