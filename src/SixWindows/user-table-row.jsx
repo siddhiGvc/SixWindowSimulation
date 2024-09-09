@@ -47,6 +47,7 @@ export default function UserTableRow({
   const [showAlert, setShowAlert] = useState(false);
   const [message,setMessage]=useState("");
   const [type,setType]=useState("");
+  const [isMuted, setIsMuted] = useState(true);
  
   // const [pin,setPin]=useState("");
   // const [pulse,setPulse]=useState("");
@@ -81,6 +82,7 @@ export default function UserTableRow({
   const handleClick=()=>{
     setShowImage(false);
       setShowVideo(true);
+      setIsMuted(false);
      
 
   }
@@ -209,7 +211,7 @@ export default function UserTableRow({
       controls 
       autoPlay  
       onEnded={handleVideoEnd}
-      muted
+      muted={isMuted}
     >
       <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
       <track src="path-to-your-captions.vtt" kind="captions" srcLang="en" label="English" />
