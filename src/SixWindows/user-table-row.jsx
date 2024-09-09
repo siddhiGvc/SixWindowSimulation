@@ -113,6 +113,24 @@ export default function UserTableRow({
   }
 
   useEffect(() => {
+    const playVideo = () => {
+      if (videoRef.current) {
+        videoRef.current.play().catch((error) => {
+          console.error("Failed to autoplay video:", error);
+        });
+      }
+    };
+  
+    // Ensure the video plays automatically after the page fully loads
+    window.addEventListener('load', playVideo);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener('load', playVideo);
+    };
+  }, []);
+
+  useEffect(() => {
  
    
     
@@ -138,11 +156,22 @@ export default function UserTableRow({
   };
 
   useEffect(() => {
-    if (showVideo && videoRef.current) {
-      videoRef.current.play().catch(error => {
-        console.error("Autoplay with sound failed. Trying to notify the user or play muted.", error);
-      });
-    }
+    const playVideo = () => {
+      if (videoRef.current) {
+        videoRef.current.play().catch((error) => {
+          console.error("Failed to autoplay video:", error);
+        });
+      }
+    };
+  
+    // Ensure the video plays automatically after the page fully loads
+    window.addEventListener('load', playVideo);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener('load', playVideo);
+    };
+
   }, [showVideo]);
   
   
