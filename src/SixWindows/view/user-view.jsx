@@ -44,7 +44,7 @@ export default function UserPage() {
       setError(false);
       return json.data;
     } catch (error) {
-      // setError(true);
+      setError(true);
       console.error('Error fetching data:', error);
   
       return [];
