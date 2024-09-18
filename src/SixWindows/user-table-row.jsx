@@ -15,15 +15,17 @@ import TableCell from '@mui/material/TableCell';
 
 
 
-const Images=[
-  "./media/kwikpay1.jpg",
-  "./media/kwikpay2.jpg",
-  "./media/kwikpay3.jpg",
-  "./media/kwikpay4.jpg",
-  "./media/kwikpay5.jpg",
-  "./media/kwikpay6.jpg",
 
-]
+  const Images=[
+    "./media/Machine1.jpg",
+    "./media/Machine2.jpg",
+    "./media/Machine3.jpg",
+    "./media/Machine4.jpg",
+    "./media/Machine5.jpg",
+    "./media/Machine6.jpg",
+  
+  ]
+
 
 const Videos=[
    "./media/kwikpayVideo1.mp4",
@@ -234,7 +236,7 @@ export default function UserTableRow({
 
        {/* hight changed */}
       <div 
-  style={{border:"1px solid grey", overflow: "auto", height:'40vh',paddingTop:"5px",paddingLeft:'2px',marginTop:"-20px"}}
+  style={{overflow: "auto", height:'40vh',paddingTop:"5px",paddingLeft:'2px',marginTop:"-20px"}}
 >
   {showImage && (
     <div 
