@@ -238,7 +238,7 @@ export default function UserTableRow({
 
        {/* hight changed */}
       <div 
-  style={{overflow: "auto", height:'40vh',paddingTop:"5px",paddingLeft:'2px',marginTop:"-20px"}}
+  style={{height:'40vh',paddingTop:"5px",paddingLeft:'2px',marginTop:"-20px"}}
 >
   {showImage && (
     <div 
