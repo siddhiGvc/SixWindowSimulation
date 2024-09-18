@@ -56,6 +56,8 @@ const style = {
   px: 4,
   pb: 3,
 };
+
+const isMuted = process.env.REACT_APP_MUTED === 'true';
 export default function UserTableRow({
   m,
   testMode,
@@ -70,7 +72,7 @@ export default function UserTableRow({
   const [showAlert, setShowAlert] = useState(false);
   const [message,setMessage]=useState("");
   const [type,setType]=useState("");
-  const [isMuted, setIsMuted] = useState(true);
+  // const [isMuted, setIsMuted] = useState(true);
  
   // const [pin,setPin]=useState("");
   // const [pulse,setPulse]=useState("");
@@ -105,7 +107,7 @@ export default function UserTableRow({
   const handleClick=()=>{
     setShowImage(false);
       setShowVideo(true);
-      setIsMuted(false);
+      // setIsMuted(false);
      
 
   }
@@ -135,28 +137,28 @@ export default function UserTableRow({
 
   }
 
-  useEffect(() => {
-    const playVideo = () => {
-      if (videoRef.current) {
-        videoRef.current.play().catch((error) => {
-          console.error("Failed to autoplay video:", error);
-        });
-      }
-    };
+  // useEffect(() => {
+  //   const playVideo = () => {
+  //     if (videoRef.current) {
+  //       videoRef.current.play().catch((error) => {
+  //         console.error("Failed to autoplay video:", error);
+  //       });
+  //     }
+  //   };
   
-    // Ensure the video plays automatically after the page fully loads
-    window.addEventListener('load', playVideo);
+  //   // Ensure the video plays automatically after the page fully loads
+  //   window.addEventListener('load', playVideo);
 
-    // Clean up the event listener when the component unmounts
-    return () => {
-      window.removeEventListener('load', playVideo);
-    };
-  }, []);
+  //   // Clean up the event listener when the component unmounts
+  //   return () => {
+  //     window.removeEventListener('load', playVideo);
+  //   };
+  // }, []);
 
   useEffect(() => {
  
    
-    
+      console.log(isMuted);
       console.log(m,board);
       if(parseInt(m)==board)
       {
@@ -178,24 +180,24 @@ export default function UserTableRow({
    
   };
 
-  useEffect(() => {
-    const playVideo = () => {
-      if (videoRef.current) {
-        videoRef.current.play().catch((error) => {
-          console.error("Failed to autoplay video:", error);
-        });
-      }
-    };
+  // useEffect(() => {
+  //   const playVideo = () => {
+  //     if (videoRef.current) {
+  //       videoRef.current.play().catch((error) => {
+  //         console.error("Failed to autoplay video:", error);
+  //       });
+  //     }
+  //   };
   
-    // Ensure the video plays automatically after the page fully loads
-    window.addEventListener('load', playVideo);
+  //   // Ensure the video plays automatically after the page fully loads
+  //   window.addEventListener('load', playVideo);
 
-    // Clean up the event listener when the component unmounts
-    return () => {
-      window.removeEventListener('load', playVideo);
-    };
+  //   // Clean up the event listener when the component unmounts
+  //   return () => {
+  //     window.removeEventListener('load', playVideo);
+  //   };
 
-  }, [showVideo]);
+  // }, [showVideo]);
   
   
 
@@ -263,6 +265,7 @@ export default function UserTableRow({
       controls 
       autoPlay  
       onEnded={handleVideoEnd}
+      muted={isMuted}
     
     >
       <source src={Videos[board-1]} type="video/mp4" />
