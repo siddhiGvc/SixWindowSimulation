@@ -15,6 +15,27 @@ import TableCell from '@mui/material/TableCell';
 
 
 
+const Images=[
+  "./media/kwikpay1.jpg",
+  "./media/kwikpay2.jpg",
+  "./media/kwikpay3.jpg",
+  "./media/kwikpay4.jpg",
+  "./media/kwikpay5.jpg",
+  "./media/kwikpay6.jpg",
+
+]
+
+const Videos=[
+   "./media/kwikpayVideo1.mp4",
+   "./media/kwikpayVideo2.mp4",
+   "./media/kwikpayVideo3.mp4",
+   "./media/kwikpayVideo4.mp4",
+   "./media/kwikpayVideo5.mp4",
+   "./media/kwikpayVideo6.mp4",
+
+]
+
+
 
 const Alert = React.forwardRef((props, ref) => (
   <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />
@@ -228,7 +249,7 @@ export default function UserTableRow({
       <img  
         width='100%'
         height='100%'
-        src="https://th.bing.com/th/id/OIP.pdfFhhpDtb1wiuMMXpcXTwHaDt?rs=1&pid=ImgDetMain" 
+        src={Images[board-1]}
         alt="img"
       />
     </div>
@@ -242,7 +263,7 @@ export default function UserTableRow({
       onEnded={handleVideoEnd}
       muted
     >
-      <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+      <source src={Videos[board-1]} type="video/mp4" />
       <track src="path-to-your-captions.vtt" kind="captions" srcLang="en" label="English" />
       Your browser does not support the video tag.
     </video>
