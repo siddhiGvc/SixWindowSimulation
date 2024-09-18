@@ -263,7 +263,7 @@ export default function UserTableRow({
       controls 
       autoPlay  
       onEnded={handleVideoEnd}
-      muted
+    
     >
       <source src={Videos[board-1]} type="video/mp4" />
       <track src="path-to-your-captions.vtt" kind="captions" srcLang="en" label="English" />
