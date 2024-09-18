@@ -28,12 +28,12 @@ import TableCell from '@mui/material/TableCell';
 
 
 const Videos=[
-   "./media/kwikpayVideo1.mp4",
-   "./media/kwikpayVideo2.mp4",
-   "./media/kwikpayVideo3.mp4",
-   "./media/kwikpayVideo4.mp4",
-   "./media/kwikpayVideo5.mp4",
-   "./media/kwikpayVideo6.mp4",
+   "./media/video.mp4",
+   "./media/video.mp4",
+   "./media/video.mp4",
+   "./media/video.mp4",
+   "./media/video.mp4",
+   "./media/video.mp4",
 
 ]
 
